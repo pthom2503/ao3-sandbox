@@ -1,6 +1,6 @@
 name: Danger
 on:
-  pull_requests:
+  pull_request:
     branches:
       - master
       - main
