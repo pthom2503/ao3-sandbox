@@ -1,1 +1,1 @@
-message(github.client.auto_paginate)
+message(github.api.auto_paginate)
