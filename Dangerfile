@@ -1,4 +1,4 @@
-REPO_FULL_NAME = pr_json["base"]["repo"]["full_name"]
+REPO_FULL_NAME = github.pr_json["base"]["repo"]["full_name"]
 
 contributors = github.api.contributors(REPO_FULL_NAME).map(&:id)
 
