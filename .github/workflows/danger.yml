@@ -1,0 +1,14 @@
+name: Danger
+on:
+  pull_requests:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+jobs:
+  - uses: actions/checkout@v3
+  - uses: danger/danger@master
+      env:
+        DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
