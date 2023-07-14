@@ -1,6 +1,6 @@
 name: Danger
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - master
       - main
@@ -21,8 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+      - uses: MeilCli/danger-action@v5
         with:
-          fetch-depth: 0
-      - uses: danger/danger@master
+          danger_file: 'Dangerfile'
+          danger_id: 'danger-pr'
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
