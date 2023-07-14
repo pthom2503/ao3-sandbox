@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+JIRA_URL = "https://otwarchive.atlassian.net"
+JIRA_API_URL = "#{JIRA_URL}/rest/agile/1.0/issue"
+
+MISSING_JIRA_MESSAGE = <<~MESSAGE
+Make sure the Jira issue number is the first thing in your PR title.
+For example, `AO3-1234 Added some cool new things`.
+MESSAGE
+
+failure(MISSING_JIRA_MESSAGE) unless /^AO3\-\d+\s/.match?(github.pr_title)
+
+def jira_link_message(jira_key)
+  <<~MESSAGE
+    Jira issue [#{jira_key}](#{JIRA_URL}/browse/#{jira_key})
+  MESSAGE
+end
+
+jira_issues = github.pr_title.scan(/AO3\-\d+/)
+jira_issues.each do |jira_issue|
+  message(jira_link_message(jira_issue))
+end
