@@ -1,10 +1,6 @@
 name: Danger
 on:
-  pull_request_target:
-    branches:
-      - master
-      - main
-  workflow_dispatch:
+  - pull_request_target
 
 permissions:
   actions: write
@@ -21,10 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
-      - name: Setup gems
-        run: gem install danger
-      - name: Run Danger
-        run: danger
+        with:
+          ref: ${{ github.event.pull_request.heads.ref }}
+          repo: ${{ github.event.pull_request.head.repo.full_name }}
+      - uses: danger/danger@master
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
