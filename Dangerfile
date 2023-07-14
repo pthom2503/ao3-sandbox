@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
-danger.import_dangerfile(path: "danger/**/")
+Dir.glob("danger/**/Dangerfile").each do |file|
+  danger.import_dangerfile(path: file)
+end
