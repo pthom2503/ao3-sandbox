@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "danger": "^11.2.8",
+    "danger-plugin-jira-issue": "^1.4.1",
+    "typescript": "^5.1.6"
+  }
+}
