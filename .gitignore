@@ -74,3 +74,5 @@ coverage
 redis-cucumber-dump.rdb
 
 .rspec
+
+node_modules/
