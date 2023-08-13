@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 REPO_FULL_NAME = github.pr_json["base"]["repo"]["full_name"]
+message(REPO_FULL_NAME)
 
 PR_LIMIT = 5
 
