@@ -3,9 +3,6 @@ on:
   - pull_request_target
 
 permissions:
-  actions: write
-  checks: write
-  contents: write
   issues: write
   pull-requests: write
   statuses: write
