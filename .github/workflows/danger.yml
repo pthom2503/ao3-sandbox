@@ -3,7 +3,6 @@ on:
   - pull_request_target
 
 permissions:
-  actions: write
   pull-requests: write
   statuses: write
 
