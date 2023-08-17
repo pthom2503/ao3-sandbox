@@ -3,7 +3,7 @@ on:
   - pull_request_target
 
 permissions:
-  contents: read
+  actions: write
   pull-requests: write
   statuses: write
 
