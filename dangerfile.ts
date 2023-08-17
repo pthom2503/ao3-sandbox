@@ -29,14 +29,17 @@ export default async () => {
   you can contact us at otw-coders@transformativeworks.org.
   `.replace(/\n/, ' ')
 
-  if (pr.author_association === 'FIRST_TIME_CONTRIBUTOR') {
+  const contributorPrevPRs = await danger.github.api.search.issuesAndPullRequests({
+    q: `is:pr is:closed author:${pr.user.login} repo:${repoName}`
+  })
+  if (contributorPrevPRs.data.total_count < 1) {
     markdown(welcomeMessage)
   }
 
-  const contributorPRs = await danger.github.api.search.issuesAndPullRequests({
+  const contributorOpenPRs = await danger.github.api.search.issuesAndPullRequests({
     q: `is:pr is:open author:${pr.user.login} repo:${repoName}`
   })
-  const openPRCount = contributorPRs.data.total_count
+  const openPRCount = contributorOpenPRs.data.total_count
   if (openPRCount <= prLimit) {
     message(`You have ${openPRCount} PR(s) open of ${prLimit} allowed`)
   } else {
