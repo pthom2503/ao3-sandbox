@@ -10,7 +10,7 @@ export default async () => {
   const prLimit = 5
   const welcomeMessage = `
   # Welcome! :wave:
-  Hi, @#{github.pr_author}! Thank you for the PR, and your interest
+  Hi, @${pr.user.login}! Thank you for the PR, and your interest
   in the otwarchive project.
 
   Please take a moment to visit at these helpful links
